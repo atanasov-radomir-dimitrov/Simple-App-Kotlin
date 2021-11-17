@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo_act2_principal"
+    tools:context=".Activity2">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAct1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:backgroundTint="@color/primaryLightColor"
+        android:text="@string/ir_a_la_activity_1"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_next"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:background="@color/secondaryDarkColor"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/margin_min"
+        android:text="@string/texto_activity_3"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAct1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBusqueda"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_min"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:hint="@string/id_busqueda"
+        app:counterEnabled="true"
+        app:counterMaxLength="@integer/max_id_length"
+        app:endIconMode="clear_text"
+        app:helperText="@string/write_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewInfo"
+        app:startIconDrawable="@drawable/ic_person">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBusqueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="@integer/max_id_length"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBuscar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:backgroundTint="@color/primaryDarkColor"
+        android:text="@string/buscar_usuario"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_search"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/tilBusqueda"
+        app:layout_constraintStart_toStartOf="@id/tilBusqueda"
+        app:layout_constraintTop_toBottomOf="@id/tilBusqueda" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:backgroundTint="@color/primaryDarkColor"
+        android:contentDescription="@string/description_add_data"
+        android:text="Agregar"
+        app:icon="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

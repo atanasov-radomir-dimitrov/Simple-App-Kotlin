@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="counter_max_name">30</integer>
+    <integer name="max_id_length">7</integer>
+    <integer name="max_tel_length">14</integer>
+</resources>

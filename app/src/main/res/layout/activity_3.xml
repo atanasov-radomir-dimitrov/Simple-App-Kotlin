@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity3">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/bottom_padding">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAct1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:backgroundTint="@color/primaryLightColor"
+            android:text="@string/ir_a_la_activity_1"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_next"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:backgroundTint="@color/primaryLightColor"
+            android:text="@string/usar_camara"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_camera"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/btnAct1"
+            app:layout_constraintStart_toStartOf="@id/btnAct1"
+            app:layout_constraintTop_toBottomOf="@id/btnAct1" />
+
+        <ImageView
+            android:id="@+id/ivFoto"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_min"
+            android:scaleType="centerCrop"
+            android:src="@drawable/imagen1"
+            app:layout_constraintDimensionRatio="H, 3:4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCamera" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AQUÍ VENDRA LA FOTO NUEVA"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            app:layout_constraintBottom_toBottomOf="@id/ivFoto"
+            app:layout_constraintEnd_toEndOf="@id/ivFoto"
+            app:layout_constraintStart_toStartOf="@id/ivFoto"
+            app:layout_constraintTop_toTopOf="@id/ivFoto" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

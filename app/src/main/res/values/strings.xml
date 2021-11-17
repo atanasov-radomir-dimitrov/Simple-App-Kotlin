@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">PAC de Desarrollo</string>
+    <string name="bienvenida">¡Bienvenida/o!</string>
+    <string name="musica"><![CDATA[<- Música ->]]></string>
+    <string name="escribe_tu_nombre">Escribe tu nombre</string>
+    <string name="write_name">Máximo 30 caracteres</string>
+    <string name="a_donde_ir">¿A dónde quieres ir?</string>
+    <string name="ir_a_la_activity_1">IR A LA ACTIVITY 1</string>
+    <string name="ir_a_la_activity_2">IR A LA ACTIVITY 2</string>
+    <string name="ir_a_la_activity_3">IR A LA ACTIVITY 3</string>
+    <string name="ir_a_la_activity_4">IR A LA ACTIVITY 4</string>
+    <string name="pulsa_para_empezar">PULSA PARA EMPEZAR</string>
+    <string name="requerido">Campo requerido</string>
+    <string name="musica_terminada">Música terminada</string>
+    <string name="bienvenida_activity2">Bienvenida/o a la Activity 2</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="usar_camara">USAR LA CÁMARA</string>
+    <string name="camara_lanzada">Cámara lanzada</string>
+    <string name="boron_play_pulsado">Botón PLAY pulsado</string>
+    <string name="boton_stop_pulsado">Botón STOP pulsado</string>
+    <string name="boton_pause_pulsado">Botón PAUSE pulsado</string>
+    <string name="description_add_data">Agregar datos</string>
+    <string name="texto_activity_3">La base de datos ha sido creada con Room.
+        Para ver detalles hay que mirar las clases de Kotlin llamadas\n
+        <b>Usuario.kt, UsuarioDao.kt, UsuarioDatabase.kt, UsuarioApp.kt</b>.</string>
+    <string name="id_busqueda">Introduce ID para la búsqueda</string>
+    <string name="write_id">Máximo 7 cifras</string>
+    <string name="buscar_usuario">Buscar usuario</string>
+    <string name="dato_no_existe">No existe usuario con este ID</string>
+    <string name="usuario_encontrado">Usuario encontrado</string>
+    <string name="datos_usuario">Datos del usuario</string>
+    <string name="introduce_datos">Introduce los datos.\nEl ID se autogenera</string>
+    <string name="nombre">Nombre</string>
+    <string name="telefono">Teléfono</string>
+    <string name="write_tel">Máximo 14 dígitos</string>
+    <string name="agregar_usuario">AGREGAR USUARIO</string>
+    <string name="error">ERROR!!!</string>
+    <string name="imposible_agregar">No ha sido posible isnertar el usuario</string>
+    <string name="usuario_agregado">Usuario agregado</string>
+    <string name="cancelar_operacion">Cancelar operación</string>
+</resources>

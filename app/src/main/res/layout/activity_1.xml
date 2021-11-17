@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/margin_default"
+    tools:context=".Activity1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivHola"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_min"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_ilerna"
+            app:layout_constraintDimensionRatio="H, 4:3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHola"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_min"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:background="@color/primaryLightColor"
+            android:fontFamily="sans-serif-medium"
+            android:padding="@dimen/margin_min"
+            android:text="@string/bienvenida"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHola" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:layout_marginEnd="@dimen/margin_min"
+            android:backgroundTint="@color/black"
+            android:text="PLAY"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_play"
+            app:iconTint="@color/play_green"
+            app:layout_constraintEnd_toStartOf="@+id/btnPause"
+            app:layout_constraintStart_toStartOf="@id/tvHola"
+            app:layout_constraintTop_toBottomOf="@id/tvHola" />
+
+        <ImageButton
+            android:id="@+id/btnPause"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/margin_min"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_pause"
+            app:layout_constraintBottom_toBottomOf="@+id/btnStop"
+            app:layout_constraintEnd_toStartOf="@+id/btnStop"
+            app:layout_constraintStart_toEndOf="@id/btnPlay"
+            app:layout_constraintTop_toTopOf="@+id/btnStop"
+            app:tint="@color/pause_orange" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:backgroundTint="@color/black"
+            android:text="STOP"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_stop"
+            app:iconTint="@color/stop_red"
+            app:layout_constraintEnd_toEndOf="@id/tvHola"
+            app:layout_constraintStart_toEndOf="@+id/btnPause"
+            app:layout_constraintTop_toBottomOf="@id/tvHola" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:hint="@string/escribe_tu_nombre"
+            app:counterEnabled="true"
+            app:counterMaxLength="@integer/counter_max_name"
+            app:endIconMode="clear_text"
+            app:helperText="@string/write_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPlay"
+            app:startIconDrawable="@drawable/ic_person">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="@integer/counter_max_name"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_min"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:background="@color/color_white_t"
+            android:padding="@dimen/margin_min"
+            android:text="@string/a_donde_ir"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilName" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAct2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:backgroundTint="@color/primaryLightColor"
+            android:text="@string/ir_a_la_activity_2"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_next"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tvHola"
+            app:layout_constraintStart_toStartOf="@id/tvHola"
+            app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAct3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:backgroundTint="@color/primaryLightColor"
+            android:text="@string/ir_a_la_activity_3"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_next"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tvHola"
+            app:layout_constraintStart_toStartOf="@id/tvHola"
+            app:layout_constraintTop_toBottomOf="@id/btnAct2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAct4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:backgroundTint="@color/primaryLightColor"
+            android:text="@string/ir_a_la_activity_4"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_next"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tvHola"
+            app:layout_constraintStart_toStartOf="@id/tvHola"
+            app:layout_constraintTop_toBottomOf="@id/btnAct3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
