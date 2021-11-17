@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
         android:background="@color/primaryColor"
+        android:fontFamily="sans-serif-condensed-medium"
         android:padding="@dimen/margin_min"
         android:text="@string/introduce_datos"
         android:textAlignment="center"
@@ -94,12 +95,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:backgroundTint="#C3FF3737"
         android:text="@string/cancelar_operacion"
         android:textColor="@color/black"
-        android:backgroundTint="#C3FF3737"
+        app:layout_constraintTop_toBottomOf="@id/btnAdd"
         app:layout_constraintEnd_toEndOf="@id/tilTelefono"
-        app:layout_constraintStart_toStartOf="@id/tilTelefono"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/margin_default"/>
+        app:layout_constraintStart_toStartOf="@id/tilTelefono" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
