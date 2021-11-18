@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ilerna.pmdm.pacdedesarrollo">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:name=".UsuarioApp"
@@ -15,19 +19,18 @@
         <activity
             android:name=".ActivityAgregarDatos"
             android:exported="false" />
-        <!--
-         Por lo de la cámara
-        LO DE LA CAMARA, PERO NO CAMARA2
+
+        <!-- Por lo de la cámara -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.ilerna.pmdm.fileprovider"
+            android:authorities="com.ilerna.pmdm.pacdedesarrollo.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
-        -->
+
         <activity
             android:name=".Activity4"
             android:exported="false" />

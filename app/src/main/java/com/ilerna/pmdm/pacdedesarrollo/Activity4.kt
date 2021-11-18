@@ -36,16 +36,8 @@ class Activity4 : AppCompatActivity(), Aux {
 
         //Esto se hace para que no se muestre el dialogo cada vez que se gira la pantalla
         if (primeraEntradaActivity4) {
-            //Obtenemos el nombre enviado desde la Activity 1
+            //Obtenemos el nombre enviado desde la Activity 1 y mostramos bienvenida por dialogo
             intent.extras?.getString("nombre")?.let { dialogobienvenida(this, it) }
-            /*//Obtenemos el nombre enviado desde la Activity 1
-            val dialogString = intent.extras?.getString("nombre")
-            //Dialogo para informar en qué Activity estamos
-            val dialogo = AlertDialog.Builder(this)
-            dialogo.setMessage("Bienvenida/o a la Activity 4, $dialogString")
-                .setPositiveButton(R.string.aceptar) { _, _ ->
-                    //No hacemos nada, solo aceptar para cerrar el dialogo
-                }.create().show()*/
             primeraEntradaActivity4 = false
         }
 

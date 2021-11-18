@@ -44,7 +44,7 @@ class Activity2 : AppCompatActivity(), Aux {
         //Título
         this.supportActionBar?.title = "Activity2"
 
-        //Obtenemos el nombre enviado desde la Activity 1
+        //Obtenemos el nombre enviado desde la Activity 1 y mostramos bienvenida por dialogo
         intent.extras?.getString("nombre")?.let { dialogobienvenida(this, it) }
 
         //Lanzar la Activity 1

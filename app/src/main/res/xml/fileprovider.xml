@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Archivo entero por lo de la cámara -->
 <paths>
     <external-files-path
         name="images"
@@ -6,4 +8,3 @@
 </paths>
 
 
-    <!-- Archivo entero por lo de la cámara -->
