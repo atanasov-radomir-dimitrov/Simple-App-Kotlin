@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
         android:background="@color/primaryColor"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="sans-serif-condensed"
         android:padding="@dimen/margin_min"
         android:text="@string/introduce_datos"
         android:textAlignment="center"

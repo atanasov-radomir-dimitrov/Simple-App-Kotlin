@@ -29,7 +29,8 @@
     <string name="dato_no_existe">No existe usuario con este ID</string>
     <string name="usuario_encontrado">Usuario encontrado</string>
     <string name="datos_usuario">Datos del usuario</string>
-    <string name="introduce_datos">Introduce los datos.\nEl ID se autogenera</string>
+    <string name="introduce_datos">Introduce los datos.\n
+        El <b>ID</b> será generado automáticamente.</string>
     <string name="nombre">Nombre</string>
     <string name="telefono">Teléfono</string>
     <string name="write_tel">Máximo 14 dígitos</string>

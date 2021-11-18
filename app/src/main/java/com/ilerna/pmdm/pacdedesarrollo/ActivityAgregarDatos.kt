@@ -14,7 +14,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+/**
+ * Activity adicional para agregar datos a la base de datos.
+ * Solicita los datos a agregar (Nombre y Telefono), pero no el ID porque este se
+ * generara automaticamente.
+ * Una vez agregado el dato, se ,muestra un dialogo informando sobre el ID generado.
+ * Si se desea abortar la operacion se dispone de un boton CANCELAR para volver hacia atras
+ */
 class ActivityAgregarDatos : AppCompatActivity() {
 
 
@@ -35,7 +41,6 @@ class ActivityAgregarDatos : AppCompatActivity() {
 
         //Boton para incertar los datos a la base da datos
         binding.btnAdd.setOnClickListener {
-
             val context = this // guardar el contexto
             val nombre = binding.etNombre.text.toString().trim()
             val telefono = binding.etTelefono.text.toString().trim()
@@ -53,24 +58,24 @@ class ActivityAgregarDatos : AppCompatActivity() {
             } else {
                 nomOk = true
             }
-            //Si lso datos estan bien tecleados procedemos a insertar en la base de datos
+            //Si los datos estan bien tecleados procedemos a insertar en la base de datos
             if (nomOk && telOk) {
                 hideSoftKeyboard()
                 //Agregar el dato con una corrutina
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
-                        var usuarioDao = UsuarioApp.getDatabase().usuarioDao()
+                        val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
                         val usuario = Usuario(nombre = nombre, telefono = telefono)
                         id = usuarioDao.addUsuario(usuario) //Obtener el ID al introducir el dato
                         if (id != null) {
                             //Se ha insertado y ha devuelto ID -> Informamos con un dialogo
                             Handler(Looper.getMainLooper()).post {
                                 val dialogo = AlertDialog.Builder(context)
-                                dialogo.setMessage("ID del usuario insertado: $id")
-                                    .setTitle(getString(R.string.usuario_agregado))
-                                    .setPositiveButton(R.string.aceptar) { _, _ ->
-                                        finish()
-                                    }
+                                dialogo.setMessage(
+                                    "Se ha generado el siguiente ID para el " +
+                                            "usuario insertado:\n\n$id"
+                                ).setTitle(getString(R.string.usuario_agregado))
+                                    .setPositiveButton(R.string.aceptar) { _, _ -> finish() }
                                     .create().show()
                             }
                         } else {
@@ -85,7 +90,8 @@ class ActivityAgregarDatos : AppCompatActivity() {
                     }
                 }
             }
-        }
+        }//binding.btnAdd.setOnClickListener
+
         //Si se presiona el boton de cancelar, se cancela la accion y se vuelve atras
         binding.btnCancelar.setOnClickListener {
             finish()
