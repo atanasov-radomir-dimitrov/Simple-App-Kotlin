@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
@@ -120,11 +121,40 @@ class Activity2 : AppCompatActivity(), Aux {
             }
         }//binding.btnBuscar.setOnClickListener
 
+        //Mostrar todos los datos que hay en la base de datos.
+        binding.btnMostrarTodos.setOnClickListener {
+            val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
+            val contexto = this
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    //Obtener el tamaño de la base de datos
+                    val tamanyo = usuarioDao.getSize()
+                    if (tamanyo > 0) {
+                        //Hay datos
+                        //Procedemos a mostrar los datos en una nueva Activity utilizando recycler view
+                        //Lanzar la activity para mostrar los datos
+                        startActivity(Intent(contexto, ActivityMostrarTodos::class.java))
+                    } else {
+                        //Informar con un dialogo o toast que la base de datos está vacia
+                        Handler(Looper.getMainLooper()).post {
+                            Toast.makeText(
+                                contexto,
+                                "No hay datos para mostrar",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    }
+                }
+            }
+        }//binding.btnMostrarTodos.setOnClickListener
+
         //Listener del Floating Action Button (FAB, para abrir nueva Activity para agregar usuario)
         binding.fab.setOnClickListener {
             val intent = Intent(this, ActivityAgregarDatos::class.java)
             resultContract.launch(intent)
             binding.fab.hide() //Escondemos el FAB
+            binding.tilBusqueda.error = null //Si hay error en el texto lo quitamos
         }
 
     }//onCreate

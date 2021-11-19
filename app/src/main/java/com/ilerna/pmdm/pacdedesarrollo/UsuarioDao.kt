@@ -16,7 +16,13 @@ interface UsuarioDao {
     @Query("SELECT * FROM Usuario WHERE id = :id")
     suspend fun getUsuarioById(id: Long): Usuario
 
+    @Query("SELECT * FROM Usuario")
+    suspend fun getAllUsuarios(): List<Usuario>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUsuario(usuario: Usuario): Long
+
+    @Query("SELECT COUNT(id) FROM Usuario")
+    suspend fun getSize(): Long
 
 }//UsuarioDao

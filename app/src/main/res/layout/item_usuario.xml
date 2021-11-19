@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_min"
+    android:background="@drawable/layout_bg"
+    android:backgroundTint="@color/secondaryColor"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_min">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textStyle="bold"
+        tools:text="ID: 123" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textStyle="italic"
+        tools:text="NOMBRE:\nRadomir Dimitrov Atanasov" />
+
+    <TextView
+        android:id="@+id/tvTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:layout_marginBottom="@dimen/margin_min"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textStyle="italic"
+        tools:text="TELEFONO: 666555444" />
+
+</LinearLayout>

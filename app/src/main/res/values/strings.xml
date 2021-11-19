@@ -51,4 +51,7 @@
     <string name="id_generado">Se ha generado el siguiente ID para el usuario insertado:</string>
     <string name="aqu_vendra_la_foto_nueva">AQUÍ VENDRA LA FOTO NUEVA</string>
     <string name="imagen_fotografia">Imagen tomada con la cámara</string>
+    <string name="mostrar_todos">Mostrar todos los datos</string>
+    <string name="titulo_act_mostrar_todos">Contenido Base de datos</string>
+    <string name="setId">ID: %1$s</string>
 </resources>

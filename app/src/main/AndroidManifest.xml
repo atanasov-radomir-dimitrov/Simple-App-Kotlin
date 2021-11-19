@@ -17,10 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PACDeDesarrollo">
         <activity
-            android:name=".ActivityAgregarDatos"
+            android:name=".ActivityMostrarTodos"
             android:exported="false" />
-
-        <!-- Por lo de la cámara -->
+        <activity
+            android:name=".ActivityAgregarDatos"
+            android:exported="false" /> <!-- Por lo de la cámara -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.ilerna.pmdm.pacdedesarrollo.fileprovider"
