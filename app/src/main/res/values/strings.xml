@@ -39,4 +39,16 @@
     <string name="imposible_agregar">No ha sido posible isnertar el usuario</string>
     <string name="usuario_agregado">Usuario agregado</string>
     <string name="cancelar_operacion">Cancelar operación</string>
+    <string name="lanzar_act2">Lanzando Actividad 2</string>
+    <string name="lanzar_act3">Lanzando Actividad 3</string>
+    <string name="lanzar_act4">Lanzando Actividad 4</string>
+    <string name="ruta_archivo">Ruta archivo</string>
+    <string name="titulo_act1">Activity1</string>
+    <string name="titulo_act2">Activity2</string>
+    <string name="titulo_act3">Activity3</string>
+    <string name="titulo_act4">Activity4</string>
+    <string name="titulo_act_gregar">Agregar dato nuevo</string>
+    <string name="id_generado">Se ha generado el siguiente ID para el usuario insertado:</string>
+    <string name="aqu_vendra_la_foto_nueva">AQUÍ VENDRA LA FOTO NUEVA</string>
+    <string name="imagen_fotografia">Imagen tomada con la cámara</string>
 </resources>

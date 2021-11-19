@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity4Binding
 
-
 private var primeraEntradaActivity4 = true
 
 /**
@@ -19,25 +18,24 @@ class Activity4 : AppCompatActivity(), Aux {
 
     private lateinit var binding: Activity4Binding
     private val resultContract =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-
-        }
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
 
     /*
      *
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = Activity4Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Título
-        this.supportActionBar?.title = "Activity1"
+        //Título de la activity
+        this.supportActionBar?.title = getString(R.string.titulo_act4)
 
         //Esto se hace para que no se muestre el dialogo cada vez que se gira la pantalla
         if (primeraEntradaActivity4) {
             //Obtenemos el nombre enviado desde la Activity 1 y mostramos bienvenida por dialogo
-            intent.extras?.getString("nombre")?.let { dialogobienvenida(this, it) }
+            intent.extras?.getString("nombre")?.let { dialogobienvenida(this, 4, it) }
             primeraEntradaActivity4 = false
         }
 

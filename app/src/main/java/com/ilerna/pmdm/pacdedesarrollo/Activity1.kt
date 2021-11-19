@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity1Binding
 
+//Nombre del usuario de la app para dar la bienvenida al ir de una activity a otra
 private var name: String? = null
 
 /**
@@ -26,11 +27,10 @@ class Activity1 : AppCompatActivity() {
     private var mp: MediaPlayer? = null
     private var position = 0
 
-
-    //Usamos para lanzar las actividades (Es 1 de varis posibilidades de hacerlo)
+    //Usamos para lanzar las activities (Es 1 de varias posibilidades de hacerlo)
+    //Aunque no esperamos resultado, se peude utilizar.
     private val resultContract =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
-
 
     /*
      * onCreate
@@ -41,9 +41,8 @@ class Activity1 : AppCompatActivity() {
         binding = Activity1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        //Título
-        this.supportActionBar?.title = "Activity1"
+        //Título de la activity
+        this.supportActionBar?.title = getString(R.string.titulo_act1)
 
         //Si no es la primera vez que vamos a la Activity1, hemos guardado el nombre
         //para no tener que introducirlo cada vez.
@@ -86,7 +85,6 @@ class Activity1 : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.boton_stop_pulsado), Toast.LENGTH_SHORT).show()
         }//btnStop.setOnClickListener
 
-
         //Cuando se presiona el enter se esconede el teclado y se quita el foco
         binding.etName.setOnKeyListener { _, keyCode, event ->
             if (event?.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -100,7 +98,7 @@ class Activity1 : AppCompatActivity() {
 
         //Botón para ir a Activity 2
         binding.btnAct2.setOnClickListener {
-            if (checkName()) {
+            if (nombreValido()) {
                 name = binding.etName.text.toString()
                 //Lanzar la Activity 2
                 val intent = Intent(this, Activity2::class.java)
@@ -108,12 +106,12 @@ class Activity1 : AppCompatActivity() {
                 resultContract.launch(intent)
                 //Finalizar la Activity 1
                 finish()
-                Toast.makeText(this, "Lanzando Actividad 2", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.lanzar_act2), Toast.LENGTH_SHORT).show()
             }
         }
         //Botón para ir a Activity 3
         binding.btnAct3.setOnClickListener {
-            if (checkName()) {
+            if (nombreValido()) {
                 name = binding.etName.text.toString()
                 //Lanzar la Activity 3
                 val intent = Intent(this, Activity3::class.java)
@@ -121,20 +119,20 @@ class Activity1 : AppCompatActivity() {
                 resultContract.launch(intent)
                 //Finalizar la Activity 1
                 finish()
-                Toast.makeText(this, "Lanzando Actividad 3", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.lanzar_act3), Toast.LENGTH_SHORT).show()
             }
         }
         //Botón para ir a Activity 4
         binding.btnAct4.setOnClickListener {
             name = binding.etName.text.toString()
-            if (checkName()) {
+            if (nombreValido()) {
                 //Lanzar la Activity 4
                 val intent = Intent(this, Activity4::class.java)
                 intent.putExtra("nombre", name)
                 resultContract.launch(intent)
                 //Finalizar la Activity 1
                 finish()
-                Toast.makeText(this, "Lanzando Actividad 4", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.lanzar_act4), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -150,6 +148,7 @@ class Activity1 : AppCompatActivity() {
      */
     override fun onDestroy() {
         super.onDestroy()
+        //Al destruir la activity, liberamos los recursos del media player
         mp?.stop()
         mp?.release()
     }//onDestroy
@@ -166,7 +165,7 @@ class Activity1 : AppCompatActivity() {
     /**
      * Comprobar que el nombre que contiene el edit text del nombre contenga datos
      */
-    private fun checkName(): Boolean {
+    private fun nombreValido(): Boolean {
         return if (binding.etName.text.toString().trim().isEmpty()) {
             binding.tilName.error = getString(R.string.requerido)
             binding.etName.requestFocus()

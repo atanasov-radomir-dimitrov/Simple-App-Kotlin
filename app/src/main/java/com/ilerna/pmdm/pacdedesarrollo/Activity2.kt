@@ -24,12 +24,14 @@ import kotlinx.coroutines.withContext
  *  - Boton para volver a la Activity 1
  *  - Ademas, se agregan comprobaciones de los campos a introducir, utilizacion de FAB, una activity
  *    nueva para agregar nuevo usuario a la base de datos, etc...
+ *  - Implementamos interfaz Aux
  */
 class Activity2 : AppCompatActivity(), Aux {
 
     private lateinit var binding: Activity2Binding
     private val resultContract =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            //Cuando volvemos de la ActivityAgregarDatos volvemos a mostrar el FAB
             binding.fab.show()
         }
 
@@ -37,15 +39,16 @@ class Activity2 : AppCompatActivity(), Aux {
      * onCreate
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = Activity2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Título
-        this.supportActionBar?.title = "Activity2"
+        //Título de la activity
+        this.supportActionBar?.title = getString(R.string.titulo_act2)
 
-        //Obtenemos el nombre enviado desde la Activity 1 y mostramos bienvenida por dialogo
-        intent.extras?.getString("nombre")?.let { dialogobienvenida(this, it) }
+        //Obtenemos el nombre enviado desde la Activity 1 y mostramos bienvenida por dialogo (interfaz Aux)
+        intent.extras?.getString("nombre")?.let { dialogobienvenida(this, 2, it) }
 
         //Lanzar la Activity 1
         binding.btnAct1.setOnClickListener {
@@ -73,13 +76,14 @@ class Activity2 : AppCompatActivity(), Aux {
 
         //Buscar un dato
         binding.btnBuscar.setOnClickListener {
-            val id = binding.etBusqueda.text.toString().trim()
+            val id = binding.etBusqueda.text.toString().trim() //Obtener el ID del usuario a buscar
             val context = this // guardar el contexto
             if (checkInputValido()) {
                 hideSoftKeyboard()
                 //Corrutina para ejecutar la búsqueda de datos en la base de datos
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
+                        //Buscar el usuario en la base de datos
                         val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
                         val usuarioPrueba: Usuario? = usuarioDao.getUsuarioById(id.toLong())
                         if (usuarioPrueba != null) {
@@ -100,7 +104,7 @@ class Activity2 : AppCompatActivity(), Aux {
                                 binding.etBusqueda.setText("")
                             }
                         } else {
-                            //DATO no encontrado: Informamos con un dialogo
+                            //Dato no encontrado: Informamos con un dialogo
                             Handler(Looper.getMainLooper()).post {
                                 val dialogo = AlertDialog.Builder(context)
                                 dialogo.setMessage(R.string.dato_no_existe)
@@ -120,11 +124,10 @@ class Activity2 : AppCompatActivity(), Aux {
         binding.fab.setOnClickListener {
             val intent = Intent(this, ActivityAgregarDatos::class.java)
             resultContract.launch(intent)
-            binding.fab.hide()
+            binding.fab.hide() //Escondemos el FAB
         }
 
     }//onCreate
-
 
     /**
      * Esconder el teclado

@@ -23,7 +23,6 @@ import kotlinx.coroutines.withContext
  */
 class ActivityAgregarDatos : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityAgregarDatosBinding
     private lateinit var usuarioDao: UsuarioDao
     private var telOk = false
@@ -31,13 +30,14 @@ class ActivityAgregarDatos : AppCompatActivity() {
     private var id: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityAgregarDatosBinding.inflate(layoutInflater)
         setContentView(binding.root)
         usuarioDao = UsuarioApp.getDatabase().usuarioDao()
 
-        //Título
-        this.supportActionBar?.title = "Agregar dato nuevo"
+        //Título de la activity
+        this.supportActionBar?.title = getString(R.string.titulo_act_gregar)
 
         //Boton para incertar los datos a la base da datos
         binding.btnAdd.setOnClickListener {
@@ -71,10 +71,9 @@ class ActivityAgregarDatos : AppCompatActivity() {
                             //Se ha insertado y ha devuelto ID -> Informamos con un dialogo
                             Handler(Looper.getMainLooper()).post {
                                 val dialogo = AlertDialog.Builder(context)
-                                dialogo.setMessage(
-                                    "Se ha generado el siguiente ID para el " +
-                                            "usuario insertado:\n\n$id"
-                                ).setTitle(getString(R.string.usuario_agregado))
+                                val aux = getString(R.string.id_generado) + "\n\n$id"
+                                dialogo.setMessage(aux)
+                                    .setTitle(getString(R.string.usuario_agregado))
                                     .setPositiveButton(R.string.aceptar) { _, _ -> finish() }
                                     .create().show()
                             }
