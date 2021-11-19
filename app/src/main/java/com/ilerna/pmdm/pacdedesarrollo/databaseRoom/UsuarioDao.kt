@@ -1,4 +1,4 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.databaseRoom
 
 import androidx.room.Dao
 import androidx.room.Insert

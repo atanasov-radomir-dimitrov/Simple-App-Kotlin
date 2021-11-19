@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ActivityMostrarTodosBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,7 +43,7 @@ class ActivityMostrarTodos : AppCompatActivity() {
     /**
      * Iniciar el adaptador para mostrar los datos
      */
-    fun iniciarRecycler() {
+    private fun iniciarRecycler() {
         binding.rvUsuario.layoutManager = LinearLayoutManager(this)
         val adapter = UsuarioAdapter(listaUsuarios)
         binding.rvUsuario.adapter = adapter

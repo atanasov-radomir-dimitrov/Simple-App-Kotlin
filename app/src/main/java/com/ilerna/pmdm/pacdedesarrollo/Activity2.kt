@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity2Binding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

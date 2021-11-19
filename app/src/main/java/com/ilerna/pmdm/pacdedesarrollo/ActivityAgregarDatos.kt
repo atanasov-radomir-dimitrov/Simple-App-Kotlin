@@ -9,6 +9,9 @@ import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioDao
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ActivityAgregarDatosBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

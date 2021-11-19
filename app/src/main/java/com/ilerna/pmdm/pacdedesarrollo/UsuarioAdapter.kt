@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ItemUsuarioBinding
 
 /**
@@ -23,9 +24,9 @@ class UsuarioAdapter(val usuario: List<Usuario>) :
 
     override fun getItemCount(): Int = usuario.size
 
-    inner class UsuarioHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class UsuarioHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val binding = ItemUsuarioBinding.bind(view)
+        private val binding = ItemUsuarioBinding.bind(view)
 
         fun render(usuario: Usuario) {
             binding.tvId.setText("ID: ${usuario.id}")
