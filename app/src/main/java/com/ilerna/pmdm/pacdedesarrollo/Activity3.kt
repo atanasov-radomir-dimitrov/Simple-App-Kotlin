@@ -2,10 +2,12 @@ package com.ilerna.pmdm.pacdedesarrollo
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -32,13 +34,16 @@ class Activity3 : AppCompatActivity(), Aux {
                 //Recibir los datos de la imagen
                 val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
                 binding.textView.text = ""
+                //Mostrar la imagen por pantalla
                 binding.ivFoto.setImageBitmap(takenImage)
-                //Guardar la imagen en galería:
-                Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).also { mediaScanIntent ->
-                    mediaScanIntent.data = Uri.fromFile(photoFile)
-                    sendBroadcast(mediaScanIntent)
-                }
-
+                //Informar con un dialogo de la ruta donde se guarda la iamgen
+                val dialogo = AlertDialog.Builder(this)
+                dialogo.setMessage(
+                    "Ruta donde está guardada la imagen:\n\n" +
+                            "${photoFile.absolutePath}"
+                ).setTitle("Ruta archivo")
+                    .setPositiveButton(R.string.aceptar) { _, _ -> }
+                    .create().show()
             }
         }
 
@@ -67,29 +72,14 @@ class Activity3 : AppCompatActivity(), Aux {
 
         //Acciones al pulsar el boton de la camara
         binding.btnCamera.setOnClickListener {
-            checkPermissions()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                //Si estamos en una versión de Android superior a la 6 tenemos que comrpobar los permisops
+                checkPermissions()
+            } else {
+                //Sino, estos se conceden automáticamente y podemos abrir la cámara sin mirar los permisos
+                abrirCamara()
+            }
         }
-
-        /* binding.btnCamera.setOnClickListener {
-
-             //permisos
-             checkForPermisson(android.Manifest.permission.CAMERA, "cámara", CAMARA_RQ)
-
-             //Camara
-             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-             photoFile = getPhotoFile(FILE_NAME)
-             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoFile)
-             val fileProvider =
-                 FileProvider.getUriForFile(this, "com.ilerna.pmdm.fileprovider", photoFile)
-             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
-             if (takePictureIntent.resolveActivity(this.packageManager) != null) {
-                 resultContract.launch(takePictureIntent)
-                 Toast.makeText(this, R.string.camara_lanzada, Toast.LENGTH_SHORT).show()
-             } else {
-                 Toast.makeText(this, "No se puede abrir la cámara", Toast.LENGTH_SHORT).show()
-             }
-
-         }//binding.btnCamera.setOnClickListener*/
 
     }//onCreate
 
@@ -146,12 +136,9 @@ class Activity3 : AppCompatActivity(), Aux {
      */
     private fun abrirCamara() {
 
-        Toast.makeText(this, "Cámara abierta", Toast.LENGTH_SHORT).show()
-
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         photoFile = getPhotoFile(FILE_NAME)
-
-        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoFile)
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoFile)
         // Donde guardar la foto
         val fileProvider = FileProvider.getUriForFile(
             this,
