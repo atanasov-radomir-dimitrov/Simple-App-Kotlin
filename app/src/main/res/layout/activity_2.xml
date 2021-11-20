@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_fondo_act2_principal"
-    tools:context=".Activity2">
+    tools:context=".activitiesPrincipales.Activity2">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAct1"

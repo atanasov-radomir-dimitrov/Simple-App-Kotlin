@@ -1,4 +1,4 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.activitiesPrincipales
 
 import android.content.Intent
 import android.media.MediaPlayer
@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity1Binding
 
 //Nombre del usuario de la app para dar la bienvenida al ir de una activity a otra

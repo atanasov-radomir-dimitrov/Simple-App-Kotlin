@@ -1,9 +1,11 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.activitiesPrincipales
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.InterfazAuxiliar
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity4Binding
 
 private var primeraEntradaActivity4 = true
@@ -14,7 +16,7 @@ private var primeraEntradaActivity4 = true
  *  - Al girar el telefono se ven 2 filas de 3 iamgenes en cada fila
  *  - Tiene boton para vovler a la Activity 1
  */
-class Activity4 : AppCompatActivity(), Aux {
+class Activity4 : AppCompatActivity(), InterfazAuxiliar {
 
     private lateinit var binding: Activity4Binding
     private val resultContract =

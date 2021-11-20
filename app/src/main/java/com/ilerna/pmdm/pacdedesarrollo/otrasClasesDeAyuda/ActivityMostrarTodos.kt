@@ -1,9 +1,10 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ActivityMostrarTodosBinding

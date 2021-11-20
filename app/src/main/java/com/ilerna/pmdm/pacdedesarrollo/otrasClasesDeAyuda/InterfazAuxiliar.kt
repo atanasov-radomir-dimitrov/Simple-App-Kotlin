@@ -1,12 +1,13 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda
 
 import android.app.AlertDialog
 import android.content.Context
+import com.ilerna.pmdm.pacdedesarrollo.R
 
 /**
  * Interfaz con funcionalidades auxiliares
  */
-interface Aux {
+interface InterfazAuxiliar {
 
     /**
      * Funcion que crea y muestra un dialogo para dar la bienvenida a la Activity

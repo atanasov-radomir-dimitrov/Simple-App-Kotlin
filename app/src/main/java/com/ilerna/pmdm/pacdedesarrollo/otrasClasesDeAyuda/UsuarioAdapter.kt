@@ -1,9 +1,10 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ItemUsuarioBinding
 

@@ -1,4 +1,4 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda
 
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioDao

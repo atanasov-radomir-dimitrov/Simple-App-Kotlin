@@ -1,4 +1,4 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.activitiesPrincipales
 
 import android.Manifest
 import android.app.Activity
@@ -17,6 +17,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.InterfazAuxiliar
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity3Binding
 import java.io.File
 
@@ -32,7 +34,7 @@ private const val CAMARA_RQ = 17
  *  - Guarda la imagen en un archivo
  *  - Muestra la imagen tomada en un imageView
  */
-class Activity3 : AppCompatActivity(), Aux {
+class Activity3 : AppCompatActivity(), InterfazAuxiliar {
 
     private lateinit var binding: Activity3Binding
     private val resultContract =

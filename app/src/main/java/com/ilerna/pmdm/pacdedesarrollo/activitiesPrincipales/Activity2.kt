@@ -1,4 +1,4 @@
-package com.ilerna.pmdm.pacdedesarrollo
+package com.ilerna.pmdm.pacdedesarrollo.activitiesPrincipales
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -12,6 +12,10 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
+import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.ActivityAgregarDatos
+import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.ActivityMostrarTodos
+import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.InterfazAuxiliar
+import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity2Binding
@@ -29,7 +33,7 @@ import kotlinx.coroutines.withContext
  *    nueva para agregar nuevo usuario a la base de datos, etc...
  *  - Implementamos interfaz Aux
  */
-class Activity2 : AppCompatActivity(), Aux {
+class Activity2 : AppCompatActivity(), InterfazAuxiliar {
 
     private lateinit var binding: Activity2Binding
     private val resultContract =
