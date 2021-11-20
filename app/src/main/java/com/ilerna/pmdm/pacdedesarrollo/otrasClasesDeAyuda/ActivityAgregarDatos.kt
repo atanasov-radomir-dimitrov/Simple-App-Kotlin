@@ -3,20 +3,17 @@ package com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.lifecycleScope
 import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioDao
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ActivityAgregarDatosBinding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * Activity adicional para agregar datos a la base de datos.
@@ -66,29 +63,27 @@ class ActivityAgregarDatos : AppCompatActivity() {
             if (nomOk && telOk) {
                 hideSoftKeyboard()
                 //Agregar el dato con una corrutina
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
-                        val usuario = Usuario(nombre = nombre, telefono = telefono)
-                        id = usuarioDao.addUsuario(usuario) //Obtener el ID al introducir el dato
-                        if (id != null) {
-                            //Se ha insertado y ha devuelto ID -> Informamos con un dialogo
-                            Handler(Looper.getMainLooper()).post {
-                                val dialogo = AlertDialog.Builder(context)
-                                val aux = getString(R.string.id_generado) + "\n\n$id"
-                                dialogo.setMessage(aux)
-                                    .setTitle(getString(R.string.usuario_agregado))
-                                    .setPositiveButton(R.string.aceptar) { _, _ -> finish() }
-                                    .create().show()
-                            }
-                        } else {
-                            //No ha sido posible insertar -> informamos con un dialogo
-                            Handler(Looper.getMainLooper()).post {
-                                val dialogo = AlertDialog.Builder(context)
-                                dialogo.setMessage(getString(R.string.imposible_agregar))
-                                    .setTitle(getString(R.string.error))
-                                    .create().show()
-                            }
+                CoroutineScope(Dispatchers.IO).launch {
+                    val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
+                    val usuario = Usuario(nombre = nombre, telefono = telefono)
+                    id = usuarioDao.addUsuario(usuario) //Obtener el ID al introducir el dato
+                    if (id != null) {
+                        //Se ha insertado y ha devuelto ID -> Informamos con un dialogo
+                        runOnUiThread {
+                            val dialogo = AlertDialog.Builder(context)
+                            val aux = getString(R.string.id_generado) + "\n\n$id"
+                            dialogo.setMessage(aux)
+                                .setTitle(getString(R.string.usuario_agregado))
+                                .setPositiveButton(R.string.aceptar) { _, _ -> finish() }
+                                .create().show()
+                        }
+                    } else {
+                        //No ha sido posible insertar -> informamos con un dialogo
+                        runOnUiThread {
+                            val dialogo = AlertDialog.Builder(context)
+                            dialogo.setMessage(getString(R.string.imposible_agregar))
+                                .setTitle(getString(R.string.error))
+                                .create().show()
                         }
                     }
                 }

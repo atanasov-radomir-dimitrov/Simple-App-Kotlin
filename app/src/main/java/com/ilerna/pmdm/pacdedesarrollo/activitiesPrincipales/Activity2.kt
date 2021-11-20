@@ -4,14 +4,11 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.lifecycleScope
 import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.ActivityAgregarDatos
 import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.ActivityMostrarTodos
 import com.ilerna.pmdm.pacdedesarrollo.otrasClasesDeAyuda.InterfazAuxiliar
@@ -19,9 +16,9 @@ import com.ilerna.pmdm.pacdedesarrollo.R
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.UsuarioApp
 import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity2Binding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * Activity 2 que contiene obligatoriamente:
@@ -84,72 +81,70 @@ class Activity2 : AppCompatActivity(), InterfazAuxiliar {
         //Buscar un dato
         binding.btnBuscar.setOnClickListener {
             val id = binding.etBusqueda.text.toString().trim() //Obtener el ID del usuario a buscar
-            val context = this // guardar el contexto
             if (checkInputValido()) {
                 hideSoftKeyboard()
                 //Corrutina para ejecutar la búsqueda de datos en la base de datos
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        //Buscar el usuario en la base de datos
-                        val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
-                        val usuarioPrueba: Usuario? = usuarioDao.getUsuarioById(id.toLong())
-                        if (usuarioPrueba != null) {
-                            //Dato existe, lo mostramos con un dialog
-                            Handler(Looper.getMainLooper()).post {
-                                val dialogo = AlertDialog.Builder(context)
-                                dialogo.setMessage(
-                                    "ID: ${usuarioPrueba.id}\n" +
-                                            "Nombre: ${usuarioPrueba.nombre}\n" +
-                                            "Teléfono: ${usuarioPrueba.telefono}"
-                                )
-                                    .setPositiveButton(R.string.aceptar) { _, _ ->
-                                        //No hacemos nada, solo aceptar para cerrar el dialogo
-                                    }
-                                    .setTitle(getString(R.string.datos_usuario))
-                                    .create().show()
-                                //Anulamos el campo del edit text
-                                binding.etBusqueda.setText("")
-                            }
-                        } else {
-                            //Dato no encontrado: Informamos con un dialogo
-                            Handler(Looper.getMainLooper()).post {
-                                val dialogo = AlertDialog.Builder(context)
-                                dialogo.setMessage(R.string.dato_no_existe)
-                                    .setPositiveButton(R.string.aceptar) { _, _ ->
-                                        //No hacemos nada, solo aceptar para cerrar el dialogo
-                                    }.create().show()
-                                //Anulamos el campo del edit text
-                                binding.etBusqueda.setText("")
-                            }
+                CoroutineScope(Dispatchers.IO).launch {
+                    //Buscar el usuario en la base de datos
+                    val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
+                    val usuarioPrueba: Usuario? = usuarioDao.getUsuarioById(id.toLong())
+                    if (usuarioPrueba != null) {
+                        //Dato existe, lo mostramos con un dialog
+                        runOnUiThread {
+                            val dialogo = AlertDialog.Builder(this@Activity2)
+                            dialogo.setMessage(
+                                "ID: ${usuarioPrueba.id}\n" +
+                                        "Nombre: ${usuarioPrueba.nombre}\n" +
+                                        "Teléfono: ${usuarioPrueba.telefono}"
+                            )
+                                .setPositiveButton(R.string.aceptar) { _, _ ->
+                                    //No hacemos nada, solo aceptar para cerrar el dialogo
+                                }
+                                .setTitle(getString(R.string.datos_usuario))
+                                .create().show()
+                            //Anulamos el campo del edit text
+                            binding.etBusqueda.setText("")
+                        }
+                    } else {
+                        //Dato no encontrado: Informamos con un dialogo
+                        runOnUiThread {
+                            val dialogo = AlertDialog.Builder(this@Activity2)
+                            dialogo.setMessage(R.string.dato_no_existe)
+                                .setPositiveButton(R.string.aceptar) { _, _ ->
+                                    //No hacemos nada, solo aceptar para cerrar el dialogo
+                                }.create().show()
+                            //Anulamos el campo del edit text
+                            binding.etBusqueda.setText("")
                         }
                     }
-                }
+                    //}
+                }//
             }
         }//binding.btnBuscar.setOnClickListener
 
         //Mostrar todos los datos que hay en la base de datos.
         binding.btnMostrarTodos.setOnClickListener {
             val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
-            val contexto = this
-            lifecycleScope.launch {
-                withContext(Dispatchers.IO) {
-                    //Obtener el tamaño de la base de datos
-                    val tamanyo = usuarioDao.getSize()
-                    if (tamanyo > 0) {
-                        //Hay datos
-                        //Procedemos a mostrar los datos en una nueva Activity utilizando recycler view
-                        //Lanzar la activity para mostrar los datos
-                        startActivity(Intent(contexto, ActivityMostrarTodos::class.java))
-                    } else {
-                        //Informar con un dialogo o toast que la base de datos está vacia
-                        Handler(Looper.getMainLooper()).post {
-                            Toast.makeText(
-                                contexto,
-                                "No hay datos para mostrar",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                        }
+            CoroutineScope(Dispatchers.IO).launch {
+                //Obtener el tamaño de la base de datos
+                val tamanyo = usuarioDao.getSize()
+                if (tamanyo > 0) {
+                    //Hay datos
+                    //Procedemos a mostrar los datos en una nueva Activity utilizando recycler view
+                    //Lanzar la activity para mostrar los datos
+                    runOnUiThread {
+                        startActivity(Intent(this@Activity2, ActivityMostrarTodos::class.java))
+                    }
+                } else {
+                    //Informar con un dialogo o toast que la base de datos está vacia
+                    //Handler(Looper.getMainLooper()).post {
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@Activity2,
+                            "No hay datos para mostrar",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
                     }
                 }
             }

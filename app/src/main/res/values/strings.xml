@@ -54,4 +54,5 @@
     <string name="mostrar_todos">Mostrar todos los datos</string>
     <string name="titulo_act_mostrar_todos">Contenido Base de datos</string>
     <string name="setId">ID: %1$s</string>
+    <string name="salir">Salir</string>
 </resources>
