@@ -31,7 +31,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/primaryDarkColor"
             android:paddingBottom="@dimen/bottom_padding">
 
@@ -40,6 +40,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/margin_default"
+                android:contentDescription="@string/imagen_1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagen1"
                 app:layout_constraintDimensionRatio="H, 4:3"
@@ -52,6 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/margin_default"
+                android:contentDescription="@string/imagen_2"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagen2"
                 app:layout_constraintDimensionRatio="H, 4:3"
@@ -64,6 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/margin_default"
+                android:contentDescription="@string/imagen_3"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagen3"
                 app:layout_constraintDimensionRatio="H, 4:3"
@@ -76,6 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/margin_default"
+                android:contentDescription="@string/imagen_4"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagen4"
                 app:layout_constraintDimensionRatio="H, 4:3"
@@ -88,6 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/margin_default"
+                android:contentDescription="@string/imagen_5"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagen5"
                 app:layout_constraintDimensionRatio="H, 4:3"
@@ -100,6 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/margin_default"
+                android:contentDescription="@string/imagen_6"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagen6"
                 app:layout_constraintDimensionRatio="H, 4:3"

@@ -22,11 +22,11 @@ import kotlinx.coroutines.launch
 
 /**
  * Activity 2 que contiene obligatoriamente:
- *  - Implementacion de una base de datos (en mi caso con Room)
- *  - Opcion para consultar la base de datos
- *  - Opcion para agregar dato a la base de datos
- *  - Boton para volver a la Activity 1
- *  - Ademas, se agregan comprobaciones de los campos a introducir, utilizacion de FAB, una activity
+ *  - Implementación de una base de datos (en mi caso con Room)
+ *  - Opción para consultar la base de datos
+ *  - Opción para agregar dato a la base de datos
+ *  - Botón para volver a la Activity 1
+ *  - Además, se agregan comprobaciones de los campos a introducir, utilización de FAB, una activity
  *    nueva para agregar nuevo usuario a la base de datos, etc...
  *  - Implementamos interfaz Aux
  */
@@ -63,7 +63,7 @@ class Activity2 : AppCompatActivity(), InterfazAuxiliar {
             finish()
         }//binding.btnAct1.setOnClickListener
 
-        //Cuando se presiona el enter se esconede el teclado y se quita el foco
+        //Cuando se presiona el enter se esconde el teclado y se quita el foco
         binding.etBusqueda.setOnKeyListener { _, keyCode, event ->
             if (event?.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 hideSoftKeyboard()
@@ -87,7 +87,8 @@ class Activity2 : AppCompatActivity(), InterfazAuxiliar {
                 CoroutineScope(Dispatchers.IO).launch {
                     //Buscar el usuario en la base de datos
                     val usuarioDao = UsuarioApp.getDatabase().usuarioDao()
-                    val usuarioPrueba: Usuario? = usuarioDao.getUsuarioById(id.toLong())
+                    val usuarioPrueba: Usuario?
+                    usuarioPrueba = usuarioDao.getUsuarioById(id.toLong())
                     if (usuarioPrueba != null) {
                         //Dato existe, lo mostramos con un dialog
                         runOnUiThread {
@@ -132,13 +133,13 @@ class Activity2 : AppCompatActivity(), InterfazAuxiliar {
                     //Hay datos
                     //Procedemos a mostrar los datos en una nueva Activity utilizando recycler view
                     //Lanzar la activity para mostrar los datos
-                    runOnUiThread {
+                    this@Activity2.runOnUiThread {
                         startActivity(Intent(this@Activity2, ActivityMostrarTodos::class.java))
                     }
                 } else {
-                    //Informar con un dialogo o toast que la base de datos está vacia
+                    //Informar con un dialogo o toast que la base de datos está vacía
                     //Handler(Looper.getMainLooper()).post {
-                    runOnUiThread {
+                    this@Activity2.runOnUiThread {
                         Toast.makeText(
                             this@Activity2,
                             "No hay datos para mostrar",

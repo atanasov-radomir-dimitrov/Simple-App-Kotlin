@@ -10,7 +10,7 @@ import com.ilerna.pmdm.pacdedesarrollo.R
 interface InterfazAuxiliar {
 
     /**
-     * Funcion que crea y muestra un dialogo para dar la bienvenida a la Activity
+     * Función que crea y muestra un dialogo para dar la bienvenida a la Activity
      *
      * @param context El contexto donde va a aparecer el dialogo
      * @param activity Activity a la ques e accede

@@ -11,10 +11,10 @@ import com.ilerna.pmdm.pacdedesarrollo.databinding.Activity4Binding
 private var primeraEntradaActivity4 = true
 
 /**
- * Activity 4 que contiene 6 imagenes
- *  - En posicion normal de la pantalla se ven las 6 una debajo de otra
- *  - Al girar el telefono se ven 2 filas de 3 iamgenes en cada fila
- *  - Tiene boton para vovler a la Activity 1
+ * Activity 4 que contiene 6 imágenes
+ *  - En posición normal de la pantalla se ven las 6 una debajo de otra
+ *  - Al girar el teléfono se ven 2 filas de 3 imágenes en cada fila
+ *  - Tiene botón para volver a la Activity 1
  */
 class Activity4 : AppCompatActivity(), InterfazAuxiliar {
 

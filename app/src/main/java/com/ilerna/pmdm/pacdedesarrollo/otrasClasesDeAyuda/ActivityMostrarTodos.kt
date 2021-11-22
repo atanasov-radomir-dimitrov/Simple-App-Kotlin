@@ -30,7 +30,7 @@ class ActivityMostrarTodos : AppCompatActivity() {
         //Título de la activity
         this.supportActionBar?.title = getString(R.string.titulo_act_mostrar_todos)
 
-        //Corrutina: Obtenemos la lsita con los datos que despues vamos a visualizar
+        //Corrutina: Obtenemos la lista con los datos que después vamos a visualizar
         CoroutineScope(Dispatchers.IO).launch {
             listaUsuarios = UsuarioApp.getDatabase().usuarioDao().getAllUsuarios()
             //Iniciamos el recyclerview

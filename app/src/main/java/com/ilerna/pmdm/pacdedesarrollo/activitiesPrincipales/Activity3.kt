@@ -46,7 +46,7 @@ class Activity3 : AppCompatActivity(), InterfazAuxiliar {
                 binding.textView.text = ""
                 //Mostrar la imagen por pantalla
                 binding.ivFoto.setImageBitmap(takenImage)
-                //Informar con un dialogo de la ruta donde se guarda la iamgen
+                //Informar con un dialogo de la ruta donde se guarda la imagen
                 val dialogo = AlertDialog.Builder(this)
                 dialogo.setMessage(photoFile.absolutePath)
                     .setTitle(getString(R.string.ruta_archivo))
@@ -70,7 +70,7 @@ class Activity3 : AppCompatActivity(), InterfazAuxiliar {
         //Obtenemos el nombre enviado desde la Activity 1 y mostramos bienvenida por dialogo
         intent.extras?.getString("nombre")?.let { dialogobienvenida(this, 3, it) }
 
-        //Vovler a la Activity1
+        //Volver a la Activity1
         binding.btnAct1.setOnClickListener {
             //Lanzar la Activity 1
             val intent = Intent(this, Activity1::class.java)
@@ -79,10 +79,10 @@ class Activity3 : AppCompatActivity(), InterfazAuxiliar {
             finish()
         }
 
-        //Acciones al pulsar el boton de la camara
+        //Acciones al pulsar el botón de la camara
         binding.btnCamera.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                //Si estamos en una versión de Android superior a la 6 tenemos que comrpobar los permisops
+                //Si estamos en una versión de Android superior a la 6 tenemos que comprobar los permisos
                 checkPermissions()
             } else {
                 //Sino, los permisos se conceden automáticamente y podemos abrir la cámara sin comprobarlos
@@ -115,7 +115,7 @@ class Activity3 : AppCompatActivity(), InterfazAuxiliar {
             //El usuario ya ha rechazado anteriormente los permisos
             Toast.makeText(this, "Permiso rechazado", Toast.LENGTH_SHORT).show()
         } else {
-            //Todavia no ha rechazado ni aceptado -> PEDIR
+            //Todavía no ha rechazado ni aceptado -> PEDIR
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMARA_RQ)
         }
     }//requestCameraPermission

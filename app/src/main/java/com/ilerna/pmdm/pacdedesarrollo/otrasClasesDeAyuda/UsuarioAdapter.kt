@@ -9,7 +9,7 @@ import com.ilerna.pmdm.pacdedesarrollo.databaseRoom.Usuario
 import com.ilerna.pmdm.pacdedesarrollo.databinding.ItemUsuarioBinding
 
 /**
- * Adapter para implementar neustro RecyclerView para visualizar los usuario de la base de datos
+ * Adapter para implementar nuestro RecyclerView para visualizar los usuario de la base de datos
  */
 class UsuarioAdapter(val usuario: List<Usuario>) :
     RecyclerView.Adapter<UsuarioAdapter.UsuarioHolder>() {
@@ -30,9 +30,12 @@ class UsuarioAdapter(val usuario: List<Usuario>) :
         private val binding = ItemUsuarioBinding.bind(view)
 
         fun render(usuario: Usuario) {
-            binding.tvId.setText("ID: ${usuario.id}")
-            binding.tvNombre.setText("NOMBRE:\n${usuario.nombre}")
-            binding.tvTel.setText("TELÉFONO:\n${usuario.telefono}")
+            val id = "ID:${usuario.id}"
+            val nombre = "NOMBRE:\n${usuario.nombre}"
+            val tel = "TELÉFONO:\n${usuario.telefono}"
+            binding.tvId.text = id
+            binding.tvNombre.text = nombre
+            binding.tvTel.text = tel
         }//render
     }//UsuarioHolder
 }//UsuarioAdapter

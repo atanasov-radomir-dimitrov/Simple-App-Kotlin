@@ -55,4 +55,17 @@
     <string name="titulo_act_mostrar_todos">Contenido Base de datos</string>
     <string name="setId">ID: %1$s</string>
     <string name="salir">Salir</string>
+    <string name="imagen_de_bienvenida">Imagen de bienvenida</string>
+    <string name="play">PLAY</string>
+    <string name="stop">STOP</string>
+    <string name="boton_pausa">Botón pausa</string>
+    <string name="agregar">Agregar</string>
+    <string name="imagen_1">Imagen 1</string>
+    <string name="imagen_2">iamgen_2</string>
+    <string name="imagen_3">Imagen_3</string>
+    <string name="imagen_4">Imagen 4</string>
+    <string name="imagen_5">Imagen 5</string>
+    <string name="imagen_6">Imagen 6</string>
+    <string name="nombre_mayusculas">NOMBRE</string>
+    <string name="telefono_mayusculas">TELÉFONO</string>
 </resources>

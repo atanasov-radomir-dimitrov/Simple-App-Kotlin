@@ -17,7 +17,7 @@ private var name: String? = null
 
 /**
  * Activity 1 que contiene obligatoriamente:
- *  - 1 iamgen
+ *  - 1 imagen
  *  - 2 botones (play y stop)
  *  - 3 botones para ir a las Activity 2, 3 y 4
  *  - Además agrega mas funcionalidad: 1 botón pause, un campo para pedir el nombre, usar Toasts y mas
@@ -29,7 +29,7 @@ class Activity1 : AppCompatActivity() {
     private var position = 0
 
     //Usamos para lanzar las activities (Es 1 de varias posibilidades de hacerlo)
-    //Aunque no esperamos resultado, se peude utilizar.
+    //Aunque no esperamos resultado, se puede utilizar.
     private val resultContract =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
 
@@ -53,7 +53,7 @@ class Activity1 : AppCompatActivity() {
 
         mp = MediaPlayer.create(this, R.raw.track)
 
-        //Accion para cuando termine la canción: Preparar para poder reproducir de neuvo
+        //Acción para cuando termine la canción: Preparar para poder reproducir de nuevo
         mp?.setOnCompletionListener {
             mp!!.stop()
             position = 0
@@ -86,7 +86,7 @@ class Activity1 : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.boton_stop_pulsado), Toast.LENGTH_SHORT).show()
         }//btnStop.setOnClickListener
 
-        //Cuando se presiona el enter se esconede el teclado y se quita el foco
+        //Cuando se presiona el enter se esconde el teclado y se quita el foco
         binding.etName.setOnKeyListener { _, keyCode, event ->
             if (event?.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 hideSoftKeyboard()

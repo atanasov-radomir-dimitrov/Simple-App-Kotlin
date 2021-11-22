@@ -8,7 +8,7 @@ import androidx.room.Query
 
 /**
  * Interfaz DAO para acceder a la base de datos cuando sea necesario.
- * Solamente estan implementadas las funciones que hacen falta para el desarrollo de la PAC.
+ * Solamente están implementadas las funciones que hacen falta para el desarrollo de la PAC.
  */
 @Dao
 interface UsuarioDao {

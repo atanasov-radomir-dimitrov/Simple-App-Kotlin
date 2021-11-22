@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivHola"
@@ -19,6 +19,7 @@
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_min"
             android:layout_marginEnd="@dimen/margin_default"
+            android:contentDescription="@string/imagen_de_bienvenida"
             android:scaleType="centerCrop"
             android:src="@drawable/logo_ilerna"
             app:layout_constraintDimensionRatio="H, 4:3"
@@ -51,7 +52,7 @@
             android:layout_marginTop="@dimen/margin_min"
             android:layout_marginEnd="@dimen/margin_min"
             android:backgroundTint="@color/black"
-            android:text="PLAY"
+            android:text="@string/play"
             android:textColor="@color/white"
             app:icon="@drawable/ic_play"
             app:iconTint="@color/play_green"
@@ -65,6 +66,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/margin_min"
             android:backgroundTint="@color/black"
+            android:contentDescription="@string/boton_pausa"
             android:src="@drawable/ic_pause"
             app:layout_constraintBottom_toBottomOf="@+id/btnStop"
             app:layout_constraintEnd_toStartOf="@+id/btnStop"
@@ -78,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_min"
             android:backgroundTint="@color/black"
-            android:text="STOP"
+            android:text="@string/stop"
             android:textColor="@color/white"
             app:icon="@drawable/ic_stop"
             app:iconTint="@color/stop_red"

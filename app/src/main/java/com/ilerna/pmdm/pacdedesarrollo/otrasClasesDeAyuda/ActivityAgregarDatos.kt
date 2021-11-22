@@ -17,10 +17,10 @@ import kotlinx.coroutines.launch
 
 /**
  * Activity adicional para agregar datos a la base de datos.
- * Solicita los datos a agregar (Nombre y Telefono), pero no el ID porque este se
- * generara automaticamente.
+ * Solicita los datos a agregar (Nombre y Teléfono), pero no el ID porque este se
+ * generara automáticamente.
  * Una vez agregado el dato, se ,muestra un dialogo informando sobre el ID generado.
- * Si se desea abortar la operacion se dispone de un boton CANCELAR para volver hacia atras
+ * Si se desea abortar la operación se dispone de un botón CANCELAR para volver hacia atrás
  */
 class ActivityAgregarDatos : AppCompatActivity() {
 
@@ -40,7 +40,7 @@ class ActivityAgregarDatos : AppCompatActivity() {
         //Título de la activity
         this.supportActionBar?.title = getString(R.string.titulo_act_gregar)
 
-        //Boton para incertar los datos a la base da datos
+        //Botón para insertar los datos a la base da datos
         binding.btnAdd.setOnClickListener {
             val context = this // guardar el contexto
             val nombre = binding.etNombre.text.toString().trim()
@@ -59,7 +59,7 @@ class ActivityAgregarDatos : AppCompatActivity() {
             } else {
                 nomOk = true
             }
-            //Si los datos estan bien tecleados procedemos a insertar en la base de datos
+            //Si los datos están bien tecleados procedemos a insertar en la base de datos
             if (nomOk && telOk) {
                 hideSoftKeyboard()
                 //Agregar el dato con una corrutina
@@ -90,12 +90,12 @@ class ActivityAgregarDatos : AppCompatActivity() {
             }
         }//binding.btnAdd.setOnClickListener
 
-        //Si se presiona el boton de cancelar, se cancela la accion y se vuelve atras
+        //Si se presiona el botón de cancelar, se cancela la acción y se vuelve atrás
         binding.btnCancelar.setOnClickListener {
             finish()
         }
 
-        //Cuando se presiona el enter se esconede el teclado y se quita el foco
+        //Cuando se presiona el enter se esconde el teclado y se quita el foco
         binding.etNombre.setOnKeyListener { _, keyCode, event ->
             if (event?.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 hideSoftKeyboard()
@@ -106,7 +106,7 @@ class ActivityAgregarDatos : AppCompatActivity() {
             false
         }//binding.etNombre.setOnKeyListener
 
-        //Cuando se presiona el enter se esconede el teclado y se quita el foco
+        //Cuando se presiona el enter se esconde el teclado y se quita el foco
         binding.etTelefono.setOnKeyListener { _, keyCode, event ->
             if (event?.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 hideSoftKeyboard()
@@ -121,7 +121,7 @@ class ActivityAgregarDatos : AppCompatActivity() {
         binding.etNombre.addTextChangedListener {
             binding.tilNombre.error = null
         }
-        //Si se escribe algo en el campo Telefono, este listener hace que deje de dar error
+        //Si se escribe algo en el campo Teléfono, este listener hace que deje de dar error
         binding.etTelefono.addTextChangedListener {
             binding.tilTelefono.error = null
         }

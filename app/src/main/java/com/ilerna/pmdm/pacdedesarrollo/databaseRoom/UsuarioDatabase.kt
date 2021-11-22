@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * Clase abstracta que hereda de RoomDatabase y sirve para la creacion de la base de datos.
+ * Clase abstracta que hereda de RoomDatabase y sirve para la creación de la base de datos.
  */
 @Database(entities = [Usuario::class], version = 1, exportSchema = false)
 abstract class UsuarioDatabase : RoomDatabase() {
