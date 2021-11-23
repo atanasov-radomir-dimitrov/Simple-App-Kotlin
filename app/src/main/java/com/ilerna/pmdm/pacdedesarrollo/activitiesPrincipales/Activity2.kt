@@ -133,13 +133,13 @@ class Activity2 : AppCompatActivity(), InterfazAuxiliar {
                     //Hay datos
                     //Procedemos a mostrar los datos en una nueva Activity utilizando recycler view
                     //Lanzar la activity para mostrar los datos
-                    this@Activity2.runOnUiThread {
+                    runOnUiThread {
                         startActivity(Intent(this@Activity2, ActivityMostrarTodos::class.java))
                     }
                 } else {
                     //Informar con un dialogo o toast que la base de datos está vacía
                     //Handler(Looper.getMainLooper()).post {
-                    this@Activity2.runOnUiThread {
+                    runOnUiThread {
                         Toast.makeText(
                             this@Activity2,
                             "No hay datos para mostrar",
